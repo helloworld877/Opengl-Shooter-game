@@ -12,5 +12,13 @@ uniform int size = 32;
 uniform vec3 colors[2];
 
 void main(){
-    frag_color = vec4(colors[0], 1.0);
+
+    //know the number of the square i am in
+    ivec2 coords = ivec2(gl_FragCoord.xy) / size; 
+
+    // if odd square ==> first color
+    // if even square ==> second color
+    vec3 selectedColor = colors[(coords.x + coords.y) % 2];
+
+    frag_color = vec4(selectedColor, 1.0);
 }
