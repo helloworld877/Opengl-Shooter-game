@@ -6,7 +6,7 @@ out/
 bin/
 
 #application cpp
-source/common/application.cpp
+# source/common/application.cpp
 
 # imgui saved state
 imgui.ini
