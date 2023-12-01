@@ -30,7 +30,7 @@ std::string default_screenshot_filepath()
     auto time = std::time(nullptr);
     struct tm localtime;
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
-    localtime_s(&time, &localtime);
+    localtime_s(&localtime, &time);
     stream << "screenshots/screenshot-" << std::put_time(&localtime, "%Y-%m-%d-%H-%M-%S") << ".png";
 #else
     localtime_r(&time, &localtime);
