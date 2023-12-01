@@ -17,9 +17,9 @@ uniform mat4 transform;
 void main(){
     //TODO: (Req 3) Change the next line to apply the transformation matrix
     //apply transformation
-    vec4 transformedPosition = transform * vec4(position,1.0);
-    //chooze the xyz coordinates
-    vs_out.position = transformedPosition.xyz;
+    gl_Position = transform * vec4(position, 1.0);
+    //apply output transform variable
+    vs_out.position= gl_Position.xyz;
     // No need to change any of the following lines
     vs_out.color = color;
     vs_out.tex_coord = tex_coord;
