@@ -20,6 +20,23 @@ out vec4 frag_color;
 
 //TODO: (Req 1) Finish this shader and apply the channel mixing using the "dot" function.
 
+
+
+// define uniforms with default values
+uniform vec4 red = vec4(1.0, 0.0, 0.0, 0.0);   
+uniform vec4 green = vec4(0.0, 1.0, 0.0, 0.0); 
+uniform vec4 blue = vec4(0.0, 0.0, 1.0, 0.0);  
+
+
+
 void main(){
-    frag_color = fs_in.color;
+    // Channel mixing using dot product
+    //TEAM:Understand This
+    float mixedRed = dot(vec4(fs_in.color, 1.0), red);
+    float mixedGreen = dot(vec4(fs_in.color, 1.0), green);
+    float mixedBlue = dot(vec4(fs_in.color, 1.0), blue);
+
+    // Output the mixed color
+    frag_color = vec4(mixedRed, mixedGreen, mixedBlue, 1.0);
+    
 }
