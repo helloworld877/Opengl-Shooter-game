@@ -27,11 +27,7 @@ namespace our
                 //  and the current entity as the parent
 
                 // looping over the children of the entity
-                for (const auto &child : entityData["children"])
-                {
-                    // deserializing the children and setting their parent to the current entity
-                    this->deserialize(child, entity);
-                }
+                this->deserialize(entityData["children"], entity);
             }
         }
     }
