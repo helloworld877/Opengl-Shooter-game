@@ -94,13 +94,10 @@ namespace our
             // the type we want to cast to
 
             // loop over component list
-            for (auto component : this->components)
-            {
-                // check if component can be dynamically cast
-                if (dynamic_cast<T *>(component) != nullptr)
-                {
-                    // found the first component that can be dynamically cast to "T*"
-                    components.remove(component);
+            for (auto it = components.begin(); it != components.end(); it++) {
+                T* component = dynamic_cast<T*>(*it);
+                if (component != nullptr) {
+                    components.erase(it);
                     delete component;
                     return;
                 }
@@ -131,6 +128,7 @@ namespace our
             {
                 // Element found, erase it
                 components.erase(it);
+                delete component;
             }
         }
 

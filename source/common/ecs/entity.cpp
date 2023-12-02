@@ -20,7 +20,7 @@ namespace our
 
         while (parent != nullptr)
         {
-            localToWorldMatrix = localToWorldMatrix * parent->localTransform.toMat4();
+            localToWorldMatrix = parent->localTransform.toMat4() * localToWorldMatrix;
             parent = parent->parent;
         }
 
