@@ -15,9 +15,7 @@ namespace our
         // you can use write: data["key"].get<T>().
         // Look at "source/common/asset-loader.hpp" to know how to use the static class AssetLoader.
 
-        // make an instance of asset loader
-        AssetLoader *loader = new AssetLoader();
-        // deserialize mesh and material assets
-        loader->deserializeAllAssets(data);
+        AssetLoader<Mesh>::get(data["mesh"].get<std::string>());
+        AssetLoader<Material>::get(data["material"].get<std::string>());
     }
 }

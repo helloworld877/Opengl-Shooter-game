@@ -14,8 +14,8 @@ namespace our
         {
             // TODO: (Req 8) Create an entity, make its parent "parent" and call its deserialize with "entityData".
 
-            // create new entity
-            Entity *entity = new Entity();
+            // adding new entity
+            Entity *entity = this->add();
             // set entity parent
             entity->parent = parent;
             // deserialize entity

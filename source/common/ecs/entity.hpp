@@ -43,6 +43,8 @@ namespace our
             T *newComponent = new T();
             // setting component owner
             newComponent->owner = this;
+            // push to components list
+            components.push_back(newComponent);
             // returning pointer to the new component
             return newComponent;
         }
@@ -62,7 +64,7 @@ namespace our
             for (auto component : this->components)
             {
                 // check if component can be dynamically cast
-                if (dynamic_cast<T *>(component) != nullptr && typeid(*component) == targetType)
+                if (dynamic_cast<T *>(component) != nullptr)
                 {
                     // found the first component that can be dynamically cast to "T*"
                     return dynamic_cast<T *>(component);
@@ -90,6 +92,21 @@ namespace our
         {
             // TODO: (Req 8) Go through the components list and find the first component that can be dynamically cast to "T*".
             //  If found, delete the found component and remove it from the components list
+            // the type we want to cast to
+            const std::type_info &targetType = typeid(T *);
+
+            // loop over component list
+            for (auto component : this->components)
+            {
+                // check if component can be dynamically cast
+                if (dynamic_cast<T *>(component) != nullptr)
+                {
+                    // found the first component that can be dynamically cast to "T*"
+                    components.remove(component);
+                    delete *component;
+                    return;
+                }
+            }
         }
 
         // This template method searhes for a component of type T and deletes it
