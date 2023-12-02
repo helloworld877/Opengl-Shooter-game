@@ -83,17 +83,12 @@ namespace our
         {
             // TODO: (Req 8) Delete all the entites and make sure that the containers are empty
 
-            // empty the entities set
-            for (const auto &entity : entities)
+            for (auto entity : entities)
             {
-                entities.erase(entity); // Remove from the entities set
-                delete entity;          // Delete the entity
+                delete entity;
             }
-            // empty the markedForRemoval set
-            for (const auto &entity : markedForRemoval)
-            {
-                entities.erase(entity); // Remove from the entities set
-            }
+            entities.clear();
+            markedForRemoval.clear();
         }
 
         // Since the world owns all of its entities, they should be deleted alongside it.

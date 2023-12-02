@@ -44,7 +44,7 @@ namespace our
             // setting component owner
             newComponent->owner = this;
             // push to components list
-            components.push_back(newComponent);
+            this->components.push_back(newComponent);
             // returning pointer to the new component
             return newComponent;
         }
@@ -58,7 +58,6 @@ namespace our
             //  Return the component you found, or return null of nothing was found.
 
             // the type we want to cast to
-            const std::type_info &targetType = typeid(T *);
 
             // loop over component list
             for (auto component : this->components)
@@ -93,7 +92,6 @@ namespace our
             // TODO: (Req 8) Go through the components list and find the first component that can be dynamically cast to "T*".
             //  If found, delete the found component and remove it from the components list
             // the type we want to cast to
-            const std::type_info &targetType = typeid(T *);
 
             // loop over component list
             for (auto component : this->components)
@@ -103,7 +101,7 @@ namespace our
                 {
                     // found the first component that can be dynamically cast to "T*"
                     components.remove(component);
-                    delete *component;
+                    delete component;
                     return;
                 }
             }
@@ -127,12 +125,27 @@ namespace our
         {
             // TODO: (Req 8) Go through the components list and find the given component "component".
             //  If found, delete the found component and remove it from the components list
+            auto it = std::find(components.begin(), components.end(), component);
+
+            if (it != components.end())
+            {
+                // Element found, erase it
+                components.erase(it);
+            }
         }
 
         // Since the entity owns its components, they should be deleted alongside the entity
         ~Entity()
         {
             // TODO: (Req 8) Delete all the components in "components".
+            for (auto component : components)
+            {
+                // check if component can be dynamically cast
+
+                // found the first component that can be dynamically cast to "T*"
+                delete component;
+            }
+            components.clear();
         }
 
         // Entities should not be copyable

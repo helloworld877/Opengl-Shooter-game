@@ -83,7 +83,7 @@ namespace our
         // get perspective projection
         else
         {
-            glm::mat4 perspectiveProjection = glm::perspective(glm::radians(this->fovY), aspectRatio, this->near, this->far);
+            glm::mat4 perspectiveProjection = glm::perspective(this->fovY, aspectRatio, this->near, this->far);
             return perspectiveProjection;
         }
     }
