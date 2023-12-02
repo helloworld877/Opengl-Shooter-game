@@ -66,8 +66,8 @@ class SamplerTestState : public our::State
         // Then we send 0 (the index of the texture unit we used above) to the "tex" uniform
         shader->set("tex", 0);
         mesh->draw();
-        sampler->unbind(0);
-        texture->unbind();
+        // sampler->unbind(0);
+        // texture->unbind();
     }
 
     void onDestroy() override
