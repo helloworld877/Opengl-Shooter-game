@@ -13,10 +13,10 @@ our::Texture2D *our::texture_utils::empty(GLenum format, glm::ivec2 size)
     // bind texture
     texture->bind();
     // assign storage to empty texture
-    glTexImage2D(GL_TEXTURE_2D, 0, format, size.x, size.y, 0, format, GL_UNSIGNED_BYTE, nullptr);
+    glTexStorage2D(GL_TEXTURE_2D, 1, format, size.x, size.y);
 
     // unbind texture
-    texture->unbind;
+    // texture->unbind;
 
     return texture;
 }

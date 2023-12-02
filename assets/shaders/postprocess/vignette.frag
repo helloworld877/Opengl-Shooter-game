@@ -20,9 +20,9 @@ void main(){
     // We have the pixel's texture coordinate, how can we compute its location in the NDC space?
     
     //getting ndc coordinates
-    vec2 ndcCoordinates = gl_FragCoord.xy / vec2(gl_FragCoord.w);
-    vec4 scene_color=texture(tex,tex_coord);
+    vec2 ndcCoordinates = (tex_coord * 2) - 1;
     float squared_length= dot(ndcCoordinates,ndcCoordinates); 
+    vec4 scene_color=texture(tex,tex_coord);
     frag_color = scene_color / (1.0 + squared_length);
     
 }
