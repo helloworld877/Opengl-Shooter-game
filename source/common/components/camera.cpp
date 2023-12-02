@@ -51,7 +51,7 @@ namespace our
         // transform to world coordinates
         eye = glm::vec3(M * glm::vec4(eye, 1.0f));
         center = glm::vec3(M * glm::vec4(center, 1.0f));
-        up = glm::vec3(M * glm::vec4(up, 1.0f));
+        up = glm::vec3(M * glm::vec4(up, 0.0f));
 
         return glm::lookAt(eye, center, up);
     }
