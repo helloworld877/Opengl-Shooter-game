@@ -14,5 +14,5 @@ void main(){
     //TODO: (Req 7) Modify the following line to compute the fragment color
     // by multiplying the tint with the vertex color and with the texture color
     vec4 texture_color = texture(tex, fs_in.tex_coord); 
-    frag_color = tint * vec4(1.0) * texture_color;
+    frag_color = tint * fs_in.color * texture_color;
 }
