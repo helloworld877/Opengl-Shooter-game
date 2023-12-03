@@ -221,7 +221,7 @@ namespace our {
                 0.0f, 0.0f, 1.0f, 1.0f
             );
             
-            printf("%d",alwaysBehindTransform.length());
+            //printf("%d",alwaysBehindTransform.length());
             //TODO: (Req 10) set the "transform" uniform
             skyMaterial->shader->set("transform", alwaysBehindTransform * VP * modelMatrix);
             //TODO: (Req 10) draw the sky sphere
