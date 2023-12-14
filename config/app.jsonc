@@ -70,7 +70,20 @@
                             "enabled": true
                         }
                     },
-                    "tint": [0.45, 0.4, 0.5, 1]
+                    "tint": [1, 1, 1, 1]
+                },
+                "test_obj":{
+                    "type": "tinted",
+                    "shader": "tinted",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [0, 0, 153, 1]
                 },
                 "glass":{
                     "type": "textured",
@@ -172,7 +185,7 @@
                     {
                         "type": "Mesh Renderer",
                         "mesh": "cube",
-                        "material": "metal"
+                        "material": "test_obj"
                     }
                 ]
             },
@@ -182,7 +195,7 @@
                     {
                         "type": "Mesh Renderer",
                         "mesh": "cube",
-                        "material": "metal"
+                        "material": "light_obj"
                     }
                 ]
             }
