@@ -17,9 +17,16 @@ namespace our
         // 1 -> Point
         // 2 -> spot
         int lightType = 0;
-
+        glm::vec3 attenuation;
+        float inner_angle;
+        float outer_angle;
+        glm::vec3 direction;
         // The ID of this component type is "Light"
-        static std::string getID() { return "Light"; }
+        static std::string
+        getID()
+        {
+            return "Light";
+        }
 
         // Receives the mesh & material from the AssetLoader by the names given in the json object
         void deserialize(const nlohmann::json &data) override;

@@ -13,5 +13,17 @@ namespace our
         // setting light properties from json file
         lightColor = data.value("lightColor", lightColor);
         lightType = data["lightType"].get<int>();
+        direction = glm::vec3(data.value("direction", glm::vec3(0, -1, 1)));
+        // not directional light
+        if (lightType != 0)
+        {
+            attenuation = glm::vec3(data.value("attenuation", glm::vec3(1, 0, 0)));
+        }
+        // if it was a spotlight
+        if (lightType == 2)
+        {
+            inner_angle = glm::radians((float)data.value("inner_angle", 10));
+            outer_angle = glm::radians((float)data.value("outer_angle", 30));
+        }
     }
 }
