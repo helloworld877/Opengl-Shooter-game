@@ -25,8 +25,8 @@
                     "fs":"assets/shaders/textured.frag"
                 },
                 "lit":{
-                    "vs":"assets/shaders/textured.vert",
-                    "fs":"assets/shaders/textured.frag"
+                    "vs":"assets/shaders/tinted.vert",
+                    "fs":"assets/shaders/tinted.frag"
                 }
             },
             "textures":{
@@ -76,9 +76,9 @@
                     },
                     "tint": [1, 1, 1, 1]
                 },
-                "test_obj":{
-                    "type": "tinted",
-                    "shader": "tinted",
+                "lit_obj":{
+                    "type": "li",
+                    "shader": "lit",
                     "pipelineState": {
                         "faceCulling":{
                             "enabled": false
@@ -189,7 +189,7 @@
                     {
                         "type": "Mesh Renderer",
                         "mesh": "cube",
-                        "material": "test_obj"
+                        "material": "lit_obj"
                     }
                 ]
             },

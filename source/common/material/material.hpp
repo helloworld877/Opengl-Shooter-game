@@ -76,7 +76,7 @@ namespace our
         {
             return new TexturedMaterial();
         }
-        else if
+        else if (type == "lit")
         {
             return new LitMaterial();
         }

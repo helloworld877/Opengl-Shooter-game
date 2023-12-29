@@ -14,7 +14,5 @@ namespace our
         lightColor = data.value("lightColor", lightColor);
         lightType = data["lightType"].get<int>();
         lightAngle = glm::radians(data.value("lightAngle", glm::degrees(lightAngle)));
-
-        std::cout << "MARK\n";
     }
 }
