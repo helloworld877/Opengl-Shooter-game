@@ -2,6 +2,7 @@
 #include "../mesh/mesh-utils.hpp"
 #include "../texture/texture-utils.hpp"
 #include <iostream>
+#include <string>
 namespace our
 {
 
@@ -226,6 +227,52 @@ namespace our
 
                 // setting light count
                 command.material->shader->set("light_count", (int)Scene_Lights.size());
+
+                // loop on all lights
+
+                for (int i = 0; i < (int)Scene_Lights.size(); i++)
+                {
+                    // setting the light type
+                    command.material->shader->set("lights[" + std::to_string(i) + "].type", Scene_Lights[i]->lightType);
+
+                    // set the color of the light
+                    glm::vec3 diffuseColor = Scene_Lights[i]->lightColor * glm::vec3(0.5f);
+                    glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);
+                    glm::vec3 specularColor = {1.0f, 1.0f, 1.0f};
+
+                    command.material->shader->set("lights[" + std::to_string(i) + "].diffuse", diffuseColor);
+                    command.material->shader->set("lights[" + std::to_string(i) + "].ambient", ambientColor);
+                    command.material->shader->set("lights[" + std::to_string(i) + "].specular", specularColor);
+
+                    // get position and direction
+                    glm::vec3 position = Scene_Lights[i]->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
+                    glm::vec3 direction = Scene_Lights[i]->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, -1, 0, 0);
+
+                    switch (Scene_Lights[i]->lightType)
+                    {
+                    // directional
+                    case 0:
+                        command.material->shader->set("lights[" + std::to_string(i) + "].direction", direction);
+                        break;
+                    // point
+                    case 1:
+                        command.material->shader->set("lights[" + std::to_string(i) + "].position", position);
+                        command.material->shader->set("lights[" + std::to_string(i) + "].attenuation_constant", Scene_Lights[i]->attenuation[0]);
+                        command.material->shader->set("lights[" + std::to_string(i) + "].attenuation_linear", Scene_Lights[i]->attenuation[1]);
+                        command.material->shader->set("lights[" + std::to_string(i) + "].attenuation_quadratic", Scene_Lights[i]->attenuation[2]);
+                        break;
+                    // spot
+                    case 2:
+                        command.material->shader->set("lights[" + std::to_string(i) + "].position", position);
+                        command.material->shader->set("lights[" + std::to_string(i) + "].direction", direction);
+                        command.material->shader->set("lights[" + std::to_string(i) + "].attenuation_constant", Scene_Lights[i]->attenuation[0]);
+                        command.material->shader->set("lights[" + std::to_string(i) + "].attenuation_linear", Scene_Lights[i]->attenuation[1]);
+                        command.material->shader->set("lights[" + std::to_string(i) + "].attenuation_quadratic", Scene_Lights[i]->attenuation[2]);
+                        command.material->shader->set("lights[" + std::to_string(i) + "].inner_angle", Scene_Lights[i]->inner_angle);
+                        command.material->shader->set("lights[" + std::to_string(i) + "].outer_angle", Scene_Lights[i]->outer_angle);
+                        break;
+                    }
+                }
             }
             else
             {
