@@ -13,7 +13,6 @@ namespace our
         // setting light properties from json file
         lightColor = data.value("lightColor", lightColor);
         lightType = data["lightType"].get<int>();
-        direction = glm::vec3(data.value("direction", glm::vec3(0, -1, 1)));
         // not directional light
         if (lightType != 0)
         {

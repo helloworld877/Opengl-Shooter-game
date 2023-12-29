@@ -20,7 +20,6 @@ namespace our
         glm::vec3 attenuation;
         float inner_angle;
         float outer_angle;
-        glm::vec3 direction;
         // The ID of this component type is "Light"
         static std::string
         getID()
