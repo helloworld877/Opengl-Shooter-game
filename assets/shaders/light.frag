@@ -17,7 +17,8 @@ struct Light {
     vec3 diffuse;
     vec3 specular;
     vec3 ambient;
-    vec3 position, direction;
+    vec3 position;
+    vec3 direction;
     float attenuation_constant;
     float attenuation_linear;
     float attenuation_quadratic;
@@ -41,10 +42,12 @@ uniform int light_count;
 out vec4 frag_color;
 
 void main() {
+
     vec3 normal = normalize(fsin.normal);
     vec3 view = normalize(fsin.view);
 
     int count = min (light_count, MAX_LIGHT_COUNT);
+
 
     vec3 accumlated_light = vec3(0.0);
 
@@ -54,9 +57,13 @@ void main() {
         vec3 light_direction;
         float attenuation =1;
 
-        if (light.type == TYPE_DIRECTIONAL)
+        frag_color=vec4(255,0,0,1);
+        return;
+        if (light.type == 0)
         {
-            light_direction= light_direction;
+            light_direction= light.direction;
+            return;
+
         }
         else
         {

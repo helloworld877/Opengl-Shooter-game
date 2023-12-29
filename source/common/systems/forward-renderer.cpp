@@ -247,7 +247,7 @@ namespace our
                     // get position and direction
                     glm::vec3 position = Scene_Lights[i]->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
                     glm::vec3 direction = Scene_Lights[i]->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, -1, 0, 0);
-
+                    std::cout << "local to world direction is " << direction[0] << direction[1] << direction[2] << "\n";
                     switch (Scene_Lights[i]->lightType)
                     {
                     // directional

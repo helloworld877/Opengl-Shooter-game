@@ -91,7 +91,10 @@
                     "specular": [1,2,4],
                     "ambient": [1,2,4],
                     "shininess": 0.2,
-                    "tint": [0, 0, 153, 1]
+                    // "tint": [0, 0, 153, 1]
+                    "tint": [1, 1, 1, 1],
+                    "texture": "moon",
+                    "sampler": "default"
                 },
                 "glass":{
                     "type": "textured",
@@ -189,6 +192,7 @@
                 ]
             },
             {
+                "position": [5, 0, 0],
                 "components": [
                     {
                         "type": "Mesh Renderer",
@@ -198,19 +202,23 @@
                 ]
             },
             {
-                "position": [5, 5, 0],
-                "rotation": [45, -45, 0],
+                "position": [0, 0, 0],
                 "components": [
                     {
                         "type":"Light",
                         "lightColor": [1,1,1],
-                        "lightType": 2
+                        "lightType": 0
+                    },
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "cube",
+                        "material": "metal"
                     }
 
                 ]
             },
             {
-                "position": [0, -1, 0],
+                "position": [0, -2, 0],
                 "rotation": [-90, 0, 0],
                 "scale": [10, 10, 1],
                 "components": [
