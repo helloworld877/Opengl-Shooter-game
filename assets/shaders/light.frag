@@ -56,14 +56,11 @@ void main() {
         Light light = lights[i];
         vec3 light_direction;
         float attenuation =1;
-
-        frag_color=vec4(255,0,0,1);
-        return;
+        
         if (light.type == 0)
         {
             light_direction= light.direction;
-            return;
-
+            
         }
         else
         {
@@ -87,6 +84,7 @@ void main() {
         vec3 ambient = material.ambient * light.ambient;
         accumlated_light += (diffuse+specular) * attenuation + ambient;   
     }
+    
     frag_color = fsin.color * vec4(accumlated_light,1.0f);
 
 }

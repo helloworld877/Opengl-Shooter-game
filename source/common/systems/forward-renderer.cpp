@@ -228,6 +228,16 @@ namespace our
                 // setting light count
                 command.material->shader->set("light_count", (int)Scene_Lights.size());
 
+                // setting material colors
+                glm::vec3 material_diffuse = litMaterial->diffuse;
+                glm::vec3 material_specular = litMaterial->specular;
+                glm::vec3 material_ambient = litMaterial->ambient;
+                float material_shininess = litMaterial->shininess;
+                command.material->shader->set("material.diffuse", material_diffuse);
+                command.material->shader->set("material.specular", material_specular);
+                command.material->shader->set("material.ambient", material_ambient);
+                command.material->shader->set("material.shininess", material_shininess);
+
                 // loop on all lights
 
                 for (int i = 0; i < (int)Scene_Lights.size(); i++)
@@ -247,7 +257,7 @@ namespace our
                     // get position and direction
                     glm::vec3 position = Scene_Lights[i]->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
                     glm::vec3 direction = Scene_Lights[i]->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, -1, 0, 0);
-                    std::cout << "local to world direction is " << direction[0] << direction[1] << direction[2] << "\n";
+                    // std::cout << "local to world direction is " << direction[0] << direction[1] << direction[2] << "\n";
                     switch (Scene_Lights[i]->lightType)
                     {
                     // directional

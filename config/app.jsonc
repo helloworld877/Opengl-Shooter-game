@@ -87,7 +87,7 @@
                             "enabled": true
                         }
                     },
-                    "diffuse": [1,2,4],
+                    "diffuse": [0.2,0.5,1.0],
                     "specular": [1,2,4],
                     "ambient": [1,2,4],
                     "shininess": 0.2,
@@ -203,10 +203,11 @@
             },
             {
                 "position": [0, 0, 0],
+                "rotation": [45,45,45],
                 "components": [
                     {
                         "type":"Light",
-                        "lightColor": [1,1,1],
+                        "lightColor": [0.2,0.5,0.0],
                         "lightType": 0
                     },
                     {
