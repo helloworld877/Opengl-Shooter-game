@@ -206,7 +206,29 @@ namespace our
         for (auto &command : opaqueCommands)
         {
             command.material->setup();
-            command.material->shader->set("transform", VP * command.localToWorld);
+            if (LitMaterial *litMaterial = dynamic_cast<LitMaterial *>(command.material))
+            {
+                // set object_to_world
+                command.material->shader->set("object_to_world", command.localToWorld);
+                // Calculate the inverse of the matrix
+                glm::mat4 inverseMatrix = glm::inverse(command.localToWorld);
+                // Transpose the inverse matrix
+                glm::mat4 inverseTransposeMatrix = glm::transpose(inverseMatrix);
+
+                // setting object_to_world_inv_transpose
+                command.material->shader->set("object_to_world_inv_transpose", inverseTransposeMatrix);
+
+                // setting view projection
+                command.material->shader->set("view_projection", VP);
+
+                // setting camera position
+                command.material->shader->set("camera_position", camera->getOwner()->localTransform.position);
+            }
+            else
+            {
+                command.material->shader->set("transform", VP * command.localToWorld);
+            }
+
             command.mesh->draw();
         }
         // If there is a sky material, draw the sky
