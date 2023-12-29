@@ -17,7 +17,6 @@ namespace our
         // 1 -> Point
         // 2 -> spot
         int lightType = 0;
-        glm::vec3 lightAngle = glm::vec3(0, 0, 0);
 
         // The ID of this component type is "Light"
         static std::string getID() { return "Light"; }

@@ -209,8 +209,7 @@
                     {
                         "type":"Light",
                         "lightColor": [1,1,1],
-                        "lightType": 1,
-                        "lightAngle": [45,-45,0]
+                        "lightType": 1
                     }
 
                 ]
