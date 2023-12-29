@@ -88,4 +88,14 @@ namespace our
         sampler = AssetLoader<Sampler>::get(data.value("sampler", ""));
     }
 
+    void LitMaterial::setup() const
+    {
+        // TODO: (Req 7) Write this function
+        TexturedMaterial::setup();
+    }
+    // This function read the material data from a json object
+    void LitMaterial::deserialize(const nlohmann::json &data)
+    {
+        TexturedMaterial::deserialize(data);
+    }
 }
