@@ -9,10 +9,15 @@ namespace our
     class LightingComponent : public Component
     {
     public:
-        glm::vec3 lightColor;
+        glm::vec3 lightColor = glm::vec3(0, 0, 0);
+        // 0 -> Directional
+        // 1 -> Point
+        // 2 -> spot
+        int lightType = 0;
+        glm::vec3 lightAngle = glm::vec3(0, 0, 0);
 
-        // The ID of this component type is "Lighting"
-        static std::string getID() { return "Lighting"; }
+        // The ID of this component type is "Light"
+        static std::string getID() { return "Light"; }
 
         // Receives the mesh & material from the AssetLoader by the names given in the json object
         void deserialize(const nlohmann::json &data) override;

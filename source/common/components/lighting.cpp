@@ -9,7 +9,9 @@ namespace our
     {
         if (!data.is_object())
             return;
-        // setting light properties
+        // setting light properties from json file
         lightColor = data.value("lightColor", lightColor);
+        lightType = data["lightType"].get<int>();
+        lightAngle = glm::radians(data.value("lightAngle", glm::degrees(lightAngle)));
     }
 }

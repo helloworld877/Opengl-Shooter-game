@@ -191,12 +191,20 @@
             },
             {
                 "position": [5, 5, 0],
+                "rotation": [45, -45, 0],
                 "components": [
                     {
                         "type": "Mesh Renderer",
                         "mesh": "cube",
                         "material": "light_obj"
+                    },
+                    {
+                        "type":"Light",
+                        "lightColor": [1,1,1],
+                        "lightType": 1,
+                        "lightAngle": [45,-45,0]
                     }
+
                 ]
             }
             // {
