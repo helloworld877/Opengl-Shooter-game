@@ -96,16 +96,16 @@ namespace our
     // This function read the material data from a json object
     void LitMaterial::deserialize(const nlohmann::json &data)
     {
+        TexturedMaterial::deserialize(data);
         diffuse = data.value("diffuse", diffuse);
         specular = data.value("specular", specular);
         ambient = data.value("ambient", ambient);
         shininess = data.value("shininess", shininess);
-
+        int test = diffuse[0];
+        std::cout << "diffuse " << diffuse[0] << "\n";
         shader->set("material.diffuse", diffuse);
         shader->set("material.specular", specular);
         shader->set("material.ambient", ambient);
         shader->set("material.shininess", shininess);
-
-        TexturedMaterial::deserialize(data);
     }
 }

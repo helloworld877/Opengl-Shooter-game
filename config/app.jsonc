@@ -25,8 +25,8 @@
                     "fs":"assets/shaders/textured.frag"
                 },
                 "lit":{
-                    "vs":"assets/shaders/tinted.vert",
-                    "fs":"assets/shaders/tinted.frag"
+                    "vs":"assets/shaders/light.vert",
+                    "fs":"assets/shaders/light.frag"
                 }
             },
             "textures":{
@@ -202,30 +202,25 @@
                 "rotation": [45, -45, 0],
                 "components": [
                     {
-                        "type": "Mesh Renderer",
-                        "mesh": "cube",
-                        "material": "light_obj"
-                    },
-                    {
                         "type":"Light",
                         "lightColor": [1,1,1],
-                        "lightType": 1
+                        "lightType": 2
                     }
 
                 ]
+            },
+            {
+                "position": [0, -1, 0],
+                "rotation": [-90, 0, 0],
+                "scale": [10, 10, 1],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "plane",
+                        "material": "grass"
+                    }
+                ]
             }
-            // {
-            //     "position": [0, -1, 0],
-            //     "rotation": [-90, 0, 0],
-            //     "scale": [10, 10, 1],
-            //     "components": [
-            //         {
-            //             "type": "Mesh Renderer",
-            //             "mesh": "plane",
-            //             "material": "grass"
-            //         }
-            //     ]
-            // }
             
             
         ]
