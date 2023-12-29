@@ -87,6 +87,10 @@
                             "enabled": true
                         }
                     },
+                    "diffuse": [1,2,4],
+                    "specular": [1,2,4],
+                    "ambient": [1,2,4],
+                    "shininess": 0.2,
                     "tint": [0, 0, 153, 1]
                 },
                 "glass":{

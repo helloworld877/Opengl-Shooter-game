@@ -2,7 +2,7 @@
 
 #include "../asset-loader.hpp"
 #include "deserialize-utils.hpp"
-
+#include <iostream>
 namespace our
 {
 
@@ -96,6 +96,10 @@ namespace our
     // This function read the material data from a json object
     void LitMaterial::deserialize(const nlohmann::json &data)
     {
+        diffuse = data.value("diffuse", diffuse);
+        specular = data.value("specular", specular);
+        ambient = data.value("ambient", ambient);
+        shininess = data.value("shininess", shininess);
         TexturedMaterial::deserialize(data);
     }
 }

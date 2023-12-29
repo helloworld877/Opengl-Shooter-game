@@ -61,6 +61,10 @@ namespace our
     class LitMaterial : public TexturedMaterial
     {
     public:
+        glm::vec3 diffuse = {0, 0, 0};
+        glm::vec3 specular = {0, 0, 0};
+        glm::vec3 ambient = {0, 0, 0};
+        float shininess;
         void setup() const override;
         void deserialize(const nlohmann::json &data) override;
     };
