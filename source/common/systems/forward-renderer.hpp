@@ -36,6 +36,11 @@ namespace our
         // We define them here (instead of being local to the "render" function) as an optimization to prevent reallocating them every frame
         std::vector<RenderCommand> opaqueCommands;
         std::vector<RenderCommand> transparentCommands;
+        // max number of lights
+        int MAX_LIGHTS = 16;
+        // vector of all lights in the scene
+        std::vector<LightingComponent *> Scene_Lights;
+
         // Objects used for rendering a skybox
         Mesh *skySphere;
         TexturedMaterial *skyMaterial;
