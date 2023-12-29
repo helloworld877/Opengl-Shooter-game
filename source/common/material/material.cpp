@@ -100,6 +100,12 @@ namespace our
         specular = data.value("specular", specular);
         ambient = data.value("ambient", ambient);
         shininess = data.value("shininess", shininess);
+
+        shader->set("material.diffuse", diffuse);
+        shader->set("material.specular", specular);
+        shader->set("material.ambient", ambient);
+        shader->set("material.shininess", shininess);
+
         TexturedMaterial::deserialize(data);
     }
 }

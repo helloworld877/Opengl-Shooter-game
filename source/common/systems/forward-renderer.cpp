@@ -222,7 +222,10 @@ namespace our
                 command.material->shader->set("view_projection", VP);
 
                 // setting camera position
-                command.material->shader->set("camera_position", camera->getOwner()->localTransform.position);
+                command.material->shader->set("camera_position", camera->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, 0, 0., 1));
+
+                // setting light count
+                command.material->shader->set("light_count", (int)Scene_Lights.size());
             }
             else
             {
