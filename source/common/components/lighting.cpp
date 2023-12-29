@@ -1,7 +1,8 @@
 #include "lighting.hpp"
 #include "../ecs/entity.hpp"
 #include "../deserialize-utils.hpp"
-
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 namespace our
 {
     // Reads sensitivities & speedupFactor from the given json object
@@ -13,5 +14,7 @@ namespace our
         lightColor = data.value("lightColor", lightColor);
         lightType = data["lightType"].get<int>();
         lightAngle = glm::radians(data.value("lightAngle", glm::degrees(lightAngle)));
+
+        std::cout << "MARK\n";
     }
 }

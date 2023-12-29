@@ -1,6 +1,9 @@
 #pragma once
 
 #include "../ecs/component.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <iostream>
 
 namespace our
 {
