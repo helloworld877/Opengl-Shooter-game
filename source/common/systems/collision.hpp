@@ -54,12 +54,14 @@ namespace our
                     if (camera->localTransform.position.x < -10 || camera->localTransform.position.x > 10)
                     {
                         std::cout << "out of bounds\n";
-                        app->changeState("lose");
+                        // app->changeState("lose");
+                        camera->localTransform.position = PrevPosition;
                     }
                     if (camera->localTransform.position.z < -10 || camera->localTransform.position.z > 10)
                     {
                         std::cout << "out of bounds\n";
-                        app->changeState("lose");
+                        // app->changeState("lose");
+                        camera->localTransform.position = PrevPosition;
                     }
                 }
             }
