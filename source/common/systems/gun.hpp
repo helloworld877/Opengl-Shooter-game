@@ -22,6 +22,8 @@ namespace our
         Application *app; // The application in which the state runs
         glm::vec3 PrevPosition = {0, 0, 0};
 
+        bool mouseClicked = false;
+
     public:
         // When a state enters, it should call this function and give it the pointer to the application
         void enter(Application *app)
@@ -55,8 +57,9 @@ namespace our
             }
 
             // know which collider I shot
-            if (app->getMouse().isPressed(GLFW_MOUSE_BUTTON_1))
+            if (app->getMouse().isPressed(GLFW_MOUSE_BUTTON_1) && !mouseClicked)
             {
+                mouseClicked = true;
                 for (auto enemy : all_enemies)
                 {
                     auto enemy_position = glm::vec3(enemy->localTransform.toMat4() * glm::vec4(0, 0, -1, 0));
@@ -83,6 +86,10 @@ namespace our
                         break;
                     }
                 }
+            }
+            else if (!app->getMouse().isPressed(GLFW_MOUSE_BUTTON_1))
+            {
+                mouseClicked = false;
             }
         }
     };
