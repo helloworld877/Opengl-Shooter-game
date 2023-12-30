@@ -37,7 +37,7 @@ namespace our
                 MovementComponent *movement = entity->getComponent<MovementComponent>();
 
                 // if the entity is an enemy orient them towards the player
-                if (entity->name == "enemy")
+                if (entity->name == "enemy" && player != nullptr)
                 {
                     // make the enemy entity look towards the player entity
                     glm::vec3 direction;

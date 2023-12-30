@@ -304,10 +304,10 @@
 
                 ]
             },
-            //tree
+            //trees
             {
                 "name": "wall",
-                "position": [10, -2,0],
+                "position": [3, -2,0],
                 "scale":[0.1,0.1,0.1],
                 "components": [
                     {
@@ -322,6 +322,58 @@
 
                 ]
             },
+            {
+                "name": "wall",
+                "position": [-5, -2,2],
+                "scale":[0.1,0.1,0.1],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "tree",
+                        "material": "tree"
+                    },
+                    {
+                        "type":"Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
+
+            // walls
+            {
+                "name": "wall",
+                "position": [3, 0,-6],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "cube",
+                        "material": "glowstone"
+                    },
+                    {
+                        "type":"Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
+            {
+                "name": "wall",
+                "position": [-7, -2, 6],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "cube",
+                        "material": "glowstone"
+                    },
+                    {
+                        "type":"Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
+            
             // enemy
             {
                 "name":"enemy",
