@@ -212,6 +212,7 @@
         },
         "world":[
             {
+                
                 "position": [0, 0, 10],
                 "components": [
                     {
@@ -223,6 +224,7 @@
                 ],
                 "children": [
                     {
+                        "name":"player",
                         // gun placeholder
                         "position": [1, -1, -1],
                         "rotation": [45, 45, 0],
@@ -232,6 +234,10 @@
                                 "type": "Mesh Renderer",
                                 "mesh": "cube",
                                 "material": "metal"
+                            },
+                            {
+                                "type":"Collider",
+                                "radius":1
                             }
                         ]
                     }
@@ -239,20 +245,26 @@
             },
             // glowstone moon
             {
-                "position": [0, 10, 0],
+                "name":"moon",
+                "position": [0, 0, 0],
                 "rotation": [45,45,45],
-                "scale":[3,3,3],
+                // "scale":[3,3,3],
                 "components": [
                     {
                         "type": "Mesh Renderer",
                         "mesh": "sphere",
                         "material": "glowstone"
+                    },
+                    {
+                        "type":"Collider",
+                        "radius": 1
                     }
 
                 ]
             },
             //tree
             {
+                "name": "tree",
                 "position": [10, -2,0],
                 "scale":[0.1,0.1,0.1],
                 "components": [
@@ -260,18 +272,27 @@
                         "type": "Mesh Renderer",
                         "mesh": "tree",
                         "material": "tree"
+                    },
+                    {
+                        "type":"Collider",
+                        "radius": 1
                     }
 
                 ]
             },
-            // glowstone moon
+            // enemy
             {
+                "name":"enemy",
                 "position": [0, 0, -5],
                 "components": [
                     {
                         "type": "Mesh Renderer",
                         "mesh": "cube",
                         "material": "enemy"
+                    },
+                    {
+                        "type": "Collider",
+                        "radius": 1
                     }
 
                 ]
