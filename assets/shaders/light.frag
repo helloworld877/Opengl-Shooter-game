@@ -77,17 +77,17 @@ void main() {
             }
         }
         vec3 reflected = reflect(light_direction, normal);
-        float lambert = max(0.0f,dot(normal,light_direction));
+        float lambert = max(0.0f,dot(normal,-light_direction));
         float phong = pow (max(0.0f,dot(view,reflected)),material.shininess);
         vec3 diffuse = material.diffuse * light.diffuse * lambert;
         // frag_color = vec4 (diffuse,1.0);
         // return;
         vec3 specular = material.specular * light.specular * phong;
         vec3 ambient = material.ambient * light.ambient;
-        accumlated_light += (diffuse+specular) * attenuation + ambient;   
+        accumlated_light += (diffuse+specular+ambient) * attenuation ;   
     }
     
     vec4 texture_color = texture(tex, fsin.tex_coord); 
-    frag_color = texture_color * vec4(accumlated_light,1.0f);
+    frag_color = fsin.color * vec4(accumlated_light,1.0f);
 
 }
