@@ -20,6 +20,8 @@ namespace our
     class Collision
     {
         Application *app; // The application in which the state runs
+        glm::vec3 PrevPosition = {0, 0, 0};
+
     public:
         // When a state enters, it should call this function and give it the pointer to the application
         void enter(Application *app)
@@ -85,11 +87,21 @@ namespace our
                         {
                             // collision here
                             std::cout << "collide between " << name1 << " and " << name2 << "\n";
-                            app->changeState("lose");
+
+                            if ((name1 == "player" && name2 == "enemy") || (name2 == "player" && name1 == "enemy"))
+                            {
+                                app->changeState("lose");
+                            }
+
+                            if ((name1 == "player" && name2 == "wall") || (name2 == "player" && name1 == "wall"))
+                            {
+                                camera->localTransform.position = PrevPosition;
+                            }
                         }
                     }
                 }
             };
+            PrevPosition = camera->localTransform.position;
         }
     };
 }

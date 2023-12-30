@@ -262,9 +262,28 @@
 
                 ]
             },
+            // glowstone moon
+            {
+                "name":"wall",
+                "position": [0, 0, 0],
+                // "rotation": [45,45,45],
+                // "scale":[3,3,3],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "cube",
+                        "material": "glowstone"
+                    },
+                    {
+                        "type":"Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
             //tree
             {
-                "name": "tree",
+                "name": "wall",
                 "position": [10, -2,0],
                 "scale":[0.1,0.1,0.1],
                 "components": [
@@ -288,7 +307,51 @@
                     {
                         "type": "Mesh Renderer",
                         "mesh": "monkey",
-                        "material": "enemy"
+                        "material": "monkey"
+                    },
+                    {
+                        // "type": "Movement"
+                        // "linearVelocity": [0, 0, 1.0]
+                    },
+                    {
+                        "type": "Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
+            {
+                "name":"enemy",
+                "position": [2, 0, -5],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "monkey",
+                        "material": "monkey"
+                    },
+                    {
+                        // "type": "Movement"
+                        // "linearVelocity": [0, 0, 1.0]
+                    },
+                    {
+                        "type": "Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
+            {
+                "name":"enemy",
+                "position": [-2, 0, -5],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "monkey",
+                        "material": "monkey"
+                    },
+                    {
+                        // "type": "Movement"
+                        // "linearVelocity": [0, 0, 1.0]
                     },
                     {
                         "type": "Collider",
