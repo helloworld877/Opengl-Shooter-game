@@ -11,8 +11,8 @@
     },
     "scene": {
         "renderer":{
-            // "sky": "assets/textures/sky.jpg"
-            // "postprocess": "assets/shaders/postprocess/chromatic-aberration.frag"
+            "sky": "assets/textures/night_sky.jpg",
+            "postprocess": "assets/shaders/postprocess/enemy_vision.frag"
         },
         "assets":{
             "shaders":{
@@ -35,14 +35,18 @@
                 "wood": "assets/textures/wood.jpg",
                 "glass": "assets/textures/glass-panels.png",
                 "monkey": "assets/textures/monkey.png",
-                "glowstone":"assets/textures/glowstone.png"
+                "glowstone":"assets/textures/glowstone.jpg",
+                "tree_tex":"assets/textures/tree.png",
+                "gun_tex":"assets/textures/gun.png"
             },
             "meshes":{
                 "cube": "assets/models/cube.obj",
                 "monkey": "assets/models/monkey.obj",
                 "plane": "assets/models/plane.obj",
                 "sphere": "assets/models/sphere.obj",
-                "tree": "assets/models/Tree low.obj"
+                "tree": "assets/models/Tree low.obj",
+                "gun": "assets/models/gun.obj"
+
             },
             "samplers":{
                 "default":{},
@@ -64,6 +68,19 @@
                     },
                     "tint": [0.45, 0.4, 0.5, 1]
                 },
+                "enemy":{
+                    "type": "tinted",
+                    "shader": "tinted",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [0.8, 0, 0, 1]
+                },
                 "glowstone":{
                     "type": "textured",
                     "shader": "textured",
@@ -77,6 +94,36 @@
                     },
                     "tint": [1, 1, 1, 1],
                     "texture": "glowstone",
+                    "sampler": "default"
+                },
+                "tree":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "tree_tex",
+                    "sampler": "default"
+                },
+                "gun":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "gun_tex",
                     "sampler": "default"
                 },
                 "light_obj":{
@@ -183,7 +230,8 @@
         },
         "world":[
             {
-                "position": [0, 0, 10],
+                "name":"player",
+                "position": [0, 0, 0],
                 "components": [
                     {
                         "type": "Camera"
@@ -194,41 +242,220 @@
                 ],
                 "children": [
                     {
-                        "position": [1, -1, -1],
-                        "rotation": [45, 45, 0],
-                        "scale": [0.1, 0.1, 1.0],
+                        "name":"player",
+                        // gun placeholder
+                        "position": [0, -1, -1],
+                        "rotation": [0, 90, 0],
+                        "scale": [0.5, 0.5, 0.5],
                         "components": [
+                            // {
+                            //     "type": "Mesh Renderer",
+                            //     "mesh": "cube",
+                            //     "material": "metal"
+                            // },
                             {
                                 "type": "Mesh Renderer",
-                                "mesh": "cube",
-                                "material": "metal"
+                                "mesh": "gun",
+                                "material": "gun"
+                            },
+                            {
+                                "type":"Collider",
+                                "radius":1
                             }
                         ]
                     }
                 ]
             },
+            // glowstone moon
             {
-                "position": [5, 0, 0],
+                "name":"moon",
+                "position": [0, 15, 0],
+                "rotation": [45,45,45],
+                // "scale":[3,3,3],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "sphere",
+                        "material": "glowstone"
+                    },
+                    {
+                        "type":"Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
+            // wall
+            {
+                "name":"wall",
+                "position": [0, -4, 0],
+                // "rotation": [45,45,45],
+                // "scale":[3,3,3],
                 "components": [
                     {
                         "type": "Mesh Renderer",
                         "mesh": "cube",
-                        "material": "lit_obj"
+                        "material": "glass"
+                    },
+                    {
+                        "type":"Collider",
+                        "radius": 1
                     }
+
+                ]
+            },
+            //trees
+            {
+                "name": "wall",
+                "position": [3, -2,0],
+                "scale":[0.1,0.1,0.1],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "tree",
+                        "material": "tree"
+                    },
+                    {
+                        "type":"Collider",
+                        "radius": 1
+                    }
+
                 ]
             },
             {
-                "position": [0, 5, 0],
-                "rotation": [45,45,45],
+                "name": "wall",
+                "position": [-5, -2,2],
+                "scale":[0.1,0.1,0.1],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "tree",
+                        "material": "tree"
+                    },
+                    {
+                        "type":"Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
+
+            // walls
+            {
+                "name": "wall",
+                "position": [3, 0,-6],
                 "components": [
                     {
                         "type": "Mesh Renderer",
                         "mesh": "cube",
                         "material": "glowstone"
+                    },
+                    {
+                        "type":"Collider",
+                        "radius": 1
                     }
 
                 ]
             },
+            {
+                "name": "wall",
+                "position": [-7, -2, 6],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "cube",
+                        "material": "glowstone"
+                    },
+                    {
+                        "type":"Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
+            
+            // enemy
+            {
+                "name":"enemy",
+                "position": [12, 0, -15],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "monkey",
+                        "material": "monkey"
+                    },
+                    {
+                        // "type": "Movement"
+                        // "linearVelocity": [0, 0, 1.0]
+                    },
+                    {
+                        "type": "Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
+            {
+                "name":"enemy",
+                "position": [-12, 0, -7],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "monkey",
+                        "material": "monkey"
+                    },
+                    {
+                        // "type": "Movement"
+                        // "linearVelocity": [0, 0, 1.0]
+                    },
+                    {
+                        "type": "Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
+            {
+                "name":"enemy",
+                "position": [-10, 0, -15],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "monkey",
+                        "material": "monkey"
+                    },
+                    {
+                        // "type": "Movement"
+                        // "linearVelocity": [0, 0, 1.0]
+                    },
+                    {
+                        "type": "Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
+            {
+                "name":"enemy",
+                "position": [10, 0, 12],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "monkey",
+                        "material": "monkey"
+                    },
+                    {
+                        // "type": "Movement"
+                        // "linearVelocity": [0, 0, 1.0]
+                    },
+                    {
+                        "type": "Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
+            
             {
                 "position": [0, -2, 0],
                 "rotation": [-90, 0, 0],
