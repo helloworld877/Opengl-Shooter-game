@@ -34,7 +34,8 @@
                 "grass": "assets/textures/grass_ground_d.jpg",
                 "wood": "assets/textures/wood.jpg",
                 "glass": "assets/textures/glass-panels.png",
-                "monkey": "assets/textures/monkey.png"
+                "monkey": "assets/textures/monkey.png",
+                "glowstone":"assets/textures/glowstone.png"
             },
             "meshes":{
                 "cube": "assets/models/cube.obj",
@@ -62,6 +63,21 @@
                         }
                     },
                     "tint": [0.45, 0.4, 0.5, 1]
+                },
+                "glowstone":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "glowstone",
+                    "sampler": "default"
                 },
                 "light_obj":{
                     "type": "tinted",
@@ -206,14 +222,9 @@
                 "rotation": [45,45,45],
                 "components": [
                     {
-                        "type":"Light",
-                        "lightColor": [0.2,0.5,0.0],
-                        "lightType": 0
-                    },
-                    {
                         "type": "Mesh Renderer",
                         "mesh": "cube",
-                        "material": "metal"
+                        "material": "glowstone"
                     }
 
                 ]
