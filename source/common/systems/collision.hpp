@@ -86,7 +86,7 @@ namespace our
                         if (first->radius + second->radius >= dist)
                         {
                             // collision here
-                            std::cout << "collide between " << name1 << " and " << name2 << "\n";
+                            // std::cout << "collide between " << name1 << " and " << name2 << "\n";
 
                             if ((name1 == "player" && name2 == "enemy") || (name2 == "player" && name1 == "enemy"))
                             {

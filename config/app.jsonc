@@ -36,14 +36,17 @@
                 "glass": "assets/textures/glass-panels.png",
                 "monkey": "assets/textures/monkey.png",
                 "glowstone":"assets/textures/glowstone.jpg",
-                "tree_tex":"assets/textures/tree.png"
+                "tree_tex":"assets/textures/tree.png",
+                "gun_tex":"assets/textures/gun.png"
             },
             "meshes":{
                 "cube": "assets/models/cube.obj",
                 "monkey": "assets/models/monkey.obj",
                 "plane": "assets/models/plane.obj",
                 "sphere": "assets/models/sphere.obj",
-                "tree": "assets/models/Tree low.obj"
+                "tree": "assets/models/Tree low.obj",
+                "gun": "assets/models/gun.obj"
+
             },
             "samplers":{
                 "default":{},
@@ -106,6 +109,21 @@
                     },
                     "tint": [1, 1, 1, 1],
                     "texture": "tree_tex",
+                    "sampler": "default"
+                },
+                "gun":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "gun_tex",
                     "sampler": "default"
                 },
                 "light_obj":{
@@ -227,13 +245,18 @@
                         "name":"player",
                         // gun placeholder
                         "position": [1, -1, -1],
-                        "rotation": [45, 45, 0],
-                        "scale": [0.1, 0.1, 1.0],
+                        "rotation": [0, 90, 0],
+                        "scale": [0.5, 0.5, 0.5],
                         "components": [
+                            // {
+                            //     "type": "Mesh Renderer",
+                            //     "mesh": "cube",
+                            //     "material": "metal"
+                            // },
                             {
                                 "type": "Mesh Renderer",
-                                "mesh": "cube",
-                                "material": "metal"
+                                "mesh": "gun",
+                                "material": "gun"
                             },
                             {
                                 "type":"Collider",
@@ -262,7 +285,7 @@
 
                 ]
             },
-            // glowstone moon
+            // wall
             {
                 "name":"wall",
                 "position": [0, 0, 0],
@@ -272,7 +295,7 @@
                     {
                         "type": "Mesh Renderer",
                         "mesh": "cube",
-                        "material": "glowstone"
+                        "material": "glass"
                     },
                     {
                         "type":"Collider",
