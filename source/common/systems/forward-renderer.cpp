@@ -223,7 +223,7 @@ namespace our
                 command.material->shader->set("view_projection", VP);
 
                 // setting camera position
-                command.material->shader->set("camera_position", camera->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, 0, 0., 1));
+                command.material->shader->set("camera_position", camera->getOwner()->localTransform.position);
 
                 // setting light count
                 command.material->shader->set("light_count", (int)Scene_Lights.size());
@@ -255,8 +255,8 @@ namespace our
                     command.material->shader->set("lights[" + std::to_string(i) + "].specular", specularColor);
 
                     // get position and direction
-                    glm::vec3 position = Scene_Lights[i]->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
-                    glm::vec3 direction = Scene_Lights[i]->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, -1, 0, 0);
+                    glm::vec3 position = Scene_Lights[i]->getOwner()->localTransform.position;
+                    glm::vec3 direction = glm::vec3(Scene_Lights[i]->getOwner()->localTransform.toMat4() * glm::vec4(0, -1, 0, 0));
                     // std::cout << "local to world position is " << position[0] << position[1] << position[2] << "\n";
                     switch (Scene_Lights[i]->lightType)
                     {
