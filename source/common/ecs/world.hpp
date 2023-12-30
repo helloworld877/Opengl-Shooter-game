@@ -62,6 +62,7 @@ namespace our
         // Then each of these elements are deleted.
         void deleteMarkedEntities()
         {
+            std::unordered_set<Entity *> entitiesToDelete;
             // TODO: (Req 8) Remove and delete all the entities that have been marked for removal
             for (const auto &entity : markedForRemoval)
             {
@@ -71,10 +72,14 @@ namespace our
 
                 if (it != entities.end())
                 {
-                    entities.erase(it);             // Remove from the entities set
-                    markedForRemoval.erase(entity); // remove from markedForRemoval set
-                    delete entity;                  // Delete the entity
+                    entitiesToDelete.insert(*it);
                 }
+            }
+            for (auto entity : entitiesToDelete)
+            {
+                entities.erase(entity);
+                markedForRemoval.erase(entity);
+                delete entity;
             }
         }
 

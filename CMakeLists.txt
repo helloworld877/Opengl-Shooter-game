@@ -88,6 +88,7 @@ set(COMMON_SOURCES
         source/common/systems/free-camera-controller.hpp
         source/common/systems/movement.hpp
         source/common/systems/collision.hpp
+        source/common/systems/gun.hpp
 )
 
 # Define the directories in which to search for the included headers

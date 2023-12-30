@@ -12,8 +12,6 @@
 #include "../components/collider.hpp"
 #include "../application.hpp"
 
-bool health = false;
-
 namespace our
 {
 

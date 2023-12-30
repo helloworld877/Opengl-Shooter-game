@@ -231,7 +231,7 @@
         "world":[
             {
                 "name":"player",
-                "position": [0, 0, 10],
+                "position": [0, 0, 0],
                 "components": [
                     {
                         "type": "Camera"
@@ -244,7 +244,7 @@
                     {
                         "name":"player",
                         // gun placeholder
-                        "position": [1, -1, -1],
+                        "position": [0, -1, -1],
                         "rotation": [0, 90, 0],
                         "scale": [0.5, 0.5, 0.5],
                         "components": [
@@ -288,7 +288,7 @@
             // wall
             {
                 "name":"wall",
-                "position": [0, 0, 0],
+                "position": [0, -4, 0],
                 // "rotation": [45,45,45],
                 // "scale":[3,3,3],
                 "components": [
@@ -377,7 +377,7 @@
             // enemy
             {
                 "name":"enemy",
-                "position": [0, 0, -5],
+                "position": [12, 0, -15],
                 "components": [
                     {
                         "type": "Mesh Renderer",
@@ -397,7 +397,7 @@
             },
             {
                 "name":"enemy",
-                "position": [2, 0, -5],
+                "position": [-12, 0, -7],
                 "components": [
                     {
                         "type": "Mesh Renderer",
@@ -417,7 +417,7 @@
             },
             {
                 "name":"enemy",
-                "position": [-2, 0, -5],
+                "position": [-10, 0, -15],
                 "components": [
                     {
                         "type": "Mesh Renderer",

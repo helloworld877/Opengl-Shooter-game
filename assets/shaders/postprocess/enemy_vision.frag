@@ -16,5 +16,13 @@ void main(){
     frag_color.rgb = vec3(gray);
     frag_color.r=original_color.r;
 
+    float squareSize = 0.001; // Change the size as needed
+    vec2 center = vec2(0.5, 0.5); // Center of the screen
+
+    // Check if the fragment is within the square bounds
+    if (abs(tex_coord.x - center.x) < squareSize && abs(tex_coord.y - center.y) < squareSize) {
+        frag_color.rgb = vec3(1.0); // Set color to white
+    }
+
     
 }

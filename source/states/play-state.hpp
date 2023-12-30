@@ -7,6 +7,7 @@
 #include <systems/forward-renderer.hpp>
 #include <systems/free-camera-controller.hpp>
 #include <systems/movement.hpp>
+#include <systems/gun.hpp>
 #include <asset-loader.hpp>
 
 // This state shows how to use the ECS framework and deserialization.
@@ -18,6 +19,7 @@ class Playstate : public our::State
     our::FreeCameraControllerSystem cameraController;
     our::MovementSystem movementSystem;
     our::Collision collision;
+    our::Gun gun;
     void onInitialize() override
     {
         // First of all, we get the scene configuration from the app config
@@ -35,6 +37,7 @@ class Playstate : public our::State
         // We initialize the camera controller system since it needs a pointer to the app
         cameraController.enter(getApp());
         collision.enter(getApp());
+        gun.enter(getApp());
         // Then we initialize the renderer
         auto size = getApp()->getFrameBufferSize();
         renderer.initialize(size, config["renderer"]);
@@ -46,6 +49,7 @@ class Playstate : public our::State
         movementSystem.update(&world, (float)deltaTime);
         cameraController.update(&world, (float)deltaTime);
         collision.update(&world, (float)deltaTime);
+        gun.update(&world, (float)deltaTime);
         // And finally we use the renderer system to draw the scene
         renderer.render(&world);
 
@@ -57,6 +61,7 @@ class Playstate : public our::State
             // If the escape  key is pressed in this frame, go to the play state
             getApp()->changeState("menu");
         }
+        world.deleteMarkedEntities();
     }
 
     void onDestroy() override
