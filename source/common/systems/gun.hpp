@@ -56,6 +56,11 @@ namespace our
                 }
             }
 
+            if (all_enemies.size() == 0)
+            {
+                app->changeState("win");
+            }
+
             // know which collider I shot
             if (app->getMouse().isPressed(GLFW_MOUSE_BUTTON_1) && !mouseClicked)
             {
