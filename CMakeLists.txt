@@ -80,6 +80,8 @@ set(COMMON_SOURCES
         source/common/components/component-deserializer.hpp
         source/common/components/lighting.cpp
         source/common/components/lighting.hpp
+        source/common/components/collider.cpp
+        source/common/components/collider.hpp
 
         source/common/systems/forward-renderer.hpp
         source/common/systems/forward-renderer.cpp
