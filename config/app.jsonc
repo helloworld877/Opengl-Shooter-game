@@ -269,7 +269,7 @@
             // glowstone moon
             {
                 "name":"moon",
-                "position": [0, 10, 0],
+                "position": [0, 15, 0],
                 "rotation": [45,45,45],
                 // "scale":[3,3,3],
                 "components": [
@@ -435,6 +435,27 @@
 
                 ]
             },
+            {
+                "name":"enemy",
+                "position": [10, 0, 12],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "monkey",
+                        "material": "monkey"
+                    },
+                    {
+                        // "type": "Movement"
+                        // "linearVelocity": [0, 0, 1.0]
+                    },
+                    {
+                        "type": "Collider",
+                        "radius": 1
+                    }
+
+                ]
+            },
+            
             {
                 "position": [0, -2, 0],
                 "rotation": [-90, 0, 0],

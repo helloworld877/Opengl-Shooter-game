@@ -57,8 +57,8 @@ namespace our
                     entity->localTransform.rotation.y = -yaw;  // Set yaw rotation
                     entity->localTransform.rotation.z = 0.0f;  // Assuming no roll rotation
 
-                    float moveX = -sin(yaw) * 1.0 * deltaTime;
-                    float moveZ = cos(yaw) * 1.0 * deltaTime;
+                    float moveX = -sin(yaw) * 2.0 * deltaTime;
+                    float moveZ = cos(yaw) * 2.0 * deltaTime;
 
                     // Update the enemy's position based on the movement components
                     entity->localTransform.position.x += moveX;
