@@ -85,6 +85,7 @@ namespace our
                         {
                             // collision here
                             std::cout << "collide between " << name1 << " and " << name2 << "\n";
+                            app->changeState("lose");
                         }
                     }
                 }
