@@ -87,7 +87,7 @@ namespace our
             return false;
         }
 
-        // This should be called every frame to update all entities containing a collider component
+        // This should be called every frame to see which enemies we hit
         void update(World *world, float deltaTime)
         {
 
@@ -119,6 +119,7 @@ namespace our
             }
 
             // know which collider I shot
+            // we run this once per click
             if (app->getMouse().isPressed(GLFW_MOUSE_BUTTON_1) && !mouseClicked)
             {
                 mouseClicked = true;
