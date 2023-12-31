@@ -89,6 +89,6 @@ void main() {
     }
     
     vec4 texture_color = texture(tex, fsin.tex_coord); 
-    frag_color = texture_color* vec4(accumlated_light,1.0f);
-
+    // frag_color = texture_color* vec4(accumlated_light,1.0f);
+    // frag_color=vec4(normal,1.0);
 }
