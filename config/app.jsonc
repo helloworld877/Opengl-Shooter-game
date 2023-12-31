@@ -288,7 +288,7 @@
             // wall
             {
                 "name":"wall",
-                "position": [0, -4, 0],
+                "position": [-3, 0, -4],
                 // "rotation": [45,45,45],
                 // "scale":[3,3,3],
                 "components": [
