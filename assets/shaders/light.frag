@@ -53,6 +53,7 @@ void main() {
 
     for (int i=0 ; i< count; i++)
     {
+        vec3 texture_color = texture(tex, fsin.tex_coord).xyz; 
         Light light = lights[i];
         vec3 light_direction;
         float attenuation =1;
@@ -79,15 +80,15 @@ void main() {
         vec3 reflected = reflect(light_direction, normal);
         float lambert = max(0.0f,dot(normal,-light_direction));
         float phong = pow (max(0.0f,dot(view,reflected)),material.shininess);
-        vec3 diffuse = material.diffuse * light.diffuse * lambert;
+        vec3 diffuse = texture_color * light.diffuse * lambert;
         // frag_color = vec4 (diffuse,1.0);
         // return;
-        vec3 specular = material.specular * light.specular * phong;
-        vec3 ambient = material.ambient * light.ambient;
+        vec3 specular = texture_color * light.specular * phong;
+        vec3 ambient = texture_color * light.ambient;
         accumlated_light += (diffuse+specular+ambient) * attenuation ;   
     }
     
     vec4 texture_color = texture(tex, fsin.tex_coord); 
-    frag_color = fsin.color * vec4(accumlated_light,1.0f);
+    frag_color = texture_color* vec4(accumlated_light,1.0f);
 
 }
