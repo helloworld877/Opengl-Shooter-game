@@ -79,8 +79,8 @@ void main() {
         vec3 reflected = reflect(light_direction, normal);
         float lambert = max(0.0f,dot(normal,-light_direction));
         float phong = pow (max(0.0f,dot(view,reflected)),material.shininess);
-        frag_color = vec4 (phong,0,0,1.0);
-        return;
+        // frag_color = vec4 (phong,0,0,1.0);
+        // return;
         vec3 diffuse = material.diffuse * light.diffuse * lambert;
         vec3 specular = material.specular * light.specular * phong;
         vec3 ambient = material.ambient * light.ambient;
