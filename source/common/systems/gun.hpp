@@ -23,7 +23,7 @@ namespace our
     class Gun
     {
         Application *app; // The application in which the state runs
-        glm::vec3 PrevPosition = {0, 0, 0};
+        // glm::vec3 PrevPosition = {0, 0, 0};
         Mix_Chunk *sound;
         bool mouseClicked = false;
 
@@ -60,20 +60,20 @@ namespace our
             std::cerr << "SDL Error: " << message << " " << SDL_GetError() << std::endl;
             exit(1);
         }
-        void AudioFinishedCallback(int channel)
-        {
-            // Add any necessary logic after the audio finishes playing
-            // For example, clean up resources, update game state, etc.
-            Mix_Chunk *sound = Mix_GetChunk(channel);
-            if (sound != nullptr)
-            {
-                Mix_FreeChunk(sound);
-            }
+        // void AudioFinishedCallback(int channel)
+        // {
+        //     // Add any necessary logic after the audio finishes playing
+        //     // For example, clean up resources, update game state, etc.
+        //     Mix_Chunk *sound = Mix_GetChunk(channel);
+        //     if (sound != nullptr)
+        //     {
+        //         Mix_FreeChunk(sound);
+        //     }
 
-            // Quit SDL_mixer
-            Mix_CloseAudio();
-            SDL_Quit();
-        }
+        //     // Quit SDL_mixer
+        //     Mix_CloseAudio();
+        //     SDL_Quit();
+        // }
         bool IsSoundPlaying(Mix_Chunk *sound)
         {
             // Check if the specific sound is playing on any channel
