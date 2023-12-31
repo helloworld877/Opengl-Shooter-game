@@ -110,10 +110,10 @@ namespace our
             if (app->getKeyboard().isPressed(GLFW_KEY_S))
                 position -= glm::normalize(glm::vec3(front.x, 0.0f, front.z)) * (deltaTime * current_sensitivity.z);
             // Q & E moves the player up and down
-            if (app->getKeyboard().isPressed(GLFW_KEY_Q))
-                position += up * (deltaTime * current_sensitivity.y);
-            if (app->getKeyboard().isPressed(GLFW_KEY_E))
-                position -= up * (deltaTime * current_sensitivity.y);
+            // if (app->getKeyboard().isPressed(GLFW_KEY_Q))
+            //     position += up * (deltaTime * current_sensitivity.y);
+            // if (app->getKeyboard().isPressed(GLFW_KEY_E))
+            //     position -= up * (deltaTime * current_sensitivity.y);
             // A & D moves the player left or right
             if (app->getKeyboard().isPressed(GLFW_KEY_D))
                 position += right * (deltaTime * current_sensitivity.x);
